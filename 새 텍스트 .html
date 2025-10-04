@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-devicewidth,initial-scale=1.0">
+    <title>시세 계산기</title>
+    <style>
+      table{
+        width:100%;
+        border: 1px solid #444444;
+      }
+      th,td{
+        border: 1px solid #444444;
+      }
+      input{
+        border:none;
+      }
+    </style>
+  </head>
+  <body id="calculator">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3">카드가</th>
+        </tr>
+      </thead>
+        <tr>
+          <td></td>
+          <td>14K</td>
+          <td>18K</td>
+        </tr>
+        <tr>
+          <td>19기준가격</td>
+          <td><input type="number" name="19기준가격(14K)" id="0" onchange="
+            document.getElementById('계산된마진1').innerText=this.value*0.3;
+            mr1.criterion_14(this.id,this.value,0);
+            mr2.criterion_14(this.id,this.value,1);
+            mr3.criterion_14(this.id,this.value,2);
+            ">
+          </td>
+          <td><input type="number" name="19기준가격(18K)" id="s0" onchange="
+            document.getElementById('계산된마진2').innerText=this.value*0.3;
+            mrs1.criterion_18(this.id,this.value,0);
+            mrs2.criterion_18(this.id,this.value,1);
+            mrs3.criterion_18(this.id,this.value,2);
+            "></td>
+        <tr>
+          <td>중량</td>
+          <td><input type="number" id="1" onchange="
+            mr1.criterion_14(this.id,this.value,0);
+            mr2.criterion_14(this.id,this.value,1);
+            mr3.criterion_14(this.id,this.value,2);
+            "></td>
+          <td><input type="number" id="s1" onchange="
+            mrs1.criterion_18(this.id,this.value,0);
+            mrs2.criterion_18(this.id,this.value,1);
+            mrs3.criterion_18(this.id,this.value,2);
+            "></td>
+        </tr>
+        <tr>
+          <td>마진</td>
+          <td>
+          <div id="o1">
+            <select id="2" onchange="
+            mr1.criterion_14(this.id,this.value,0);
+            mr2.criterion_14(this.id,this.value,1);
+            mr3.criterion_14(this.id,this.value,2);
+          ">
+              <option value="" id="계산된마진1" >0</option>
+              <option value="">직접입력</option>
+              <option value="">10000</option>
+              <option value="">20000</option>
+              <option value="">30000</option>
+              <option value="">40000</option>
+              <option value="">50000</option>
+              <option value="">60000</option>
+              <option value="">70000</option>
+              <option value="">80000</option>
+              <option value="">90000</option>
+              <option value="">100000</option>
+            </select>
+            <input type="number" id="direct14" style="display:none" onchange="
+            mr1.criterion_14(this.id,this.value,0);
+            mr2.criterion_14(this.id,this.value,1);
+            mr3.criterion_14(this.id,this.value,2);
+            ">
+          </div>
+          </td>
+          <td id="">
+          <div>
+            <select id="s2" onchange="
+            mrs1.criterion_18(this.id,this.value,0);
+            mrs2.criterion_18(this.id,this.value,1);
+            mrs3.criterion_18(this.id,this.value,2);
+            " style="display:block">
+              <option value="" id="계산된마진2" >0</option>
+              <option >직접입력</option>
+              <option value="" >10000</option>
+              <option value="">20000</option>
+              <option value="">30000</option>
+              <option value="">40000</option>
+              <option value="">50000</option>
+              <option value="">60000</option>
+              <option value="">70000</option>
+              <option value="">80000</option>
+              <option value="">90000</option>
+              <option value="">100000</option>
+            </select>
+            <input type="number" id="direct18" style="display:none" onchange="
+            mrs1.criterion_18(this.id,this.value,0);
+            mrs2.criterion_18(this.id,this.value,1);
+            mrs3.criterion_18(this.id,this.value,2);
+            ">
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td>현재시세1</td>
+          <td colspan="2">
+            <select id="3" name="현재시세1" onchange="
+            mr1.criterion_14(this.id,this.value,0);
+            mrs1.criterion_18(this.id,this.value,0);
+            ">
+              <option>175000</option>
+              <option>195000</option>
+              <option>215000</option>
+              <option>235000</option>
+              <option selected value="255000">255000</option>
+              <option>275000</option>
+              <option>295000</option>
+              <option>315000</option>
+              <option>335000</option>
+              <option>355000</option>
+              <option>375000</option>
+              <option>395000</option>
+              <option>415000</option>
+              <option>435000</option>
+              <option>455000</option>
+              <option>475000</option>
+              <option>495000</option>
+              <option>515000</option>
+              <option>535000</option>
+              <option>555000</option>
+              <option>575000</option>
+              <option>595000</option>
+              <option>615000</option>
+              <option>635000</option>
+              <option>655000</option>
+              <option>675000</option>
+              <option>695000</option>
+              <option>715000</option>
+              <option>735000</option>
+              <option>755000</option>
+              <option>775000</option>
+              <option>795000</option>
+              <option>815000</option>
+              <option>835000</option>
+              <option>855000</option>
+              <option>875000</option>
+              <option>895000</option>
+              <option>915000</option>
+              <option>935000</option>
+              <option>955000</option>
+              <option>975000</option>
+              <option>995000</option>
+              <option>1015000</option>
+            </select>
+
+          </td>
+        </tr>
+        <tr>
+          <td>카드가1</td>
+          <td id="카드가1" style="background-color:Tan" ></td>
+          <td id="카드가s1" style="background-color:RosyBrown"></td>
+        </tr>
+        <tr>
+          <td>현재시세2</td>
+          <td colspan="2">
+            <select id ="4" onchange="
+            mr2.criterion_14(this.id,this.value,1);
+            mrs2.criterion_18(this.id,this.value,1);
+            ">
+              <option>195000</option>
+              <option>215000</option>
+              <option>235000</option>
+              <option>255000</option>
+              <option value="275000" selected >275000</option>
+              <option>295000</option>
+              <option>315000</option>
+              <option>335000</option>
+              <option>355000</option>
+              <option>375000</option>
+              <option>395000</option>
+              <option>415000</option>
+              <option>435000</option>
+              <option>455000</option>
+              <option>475000</option>
+              <option>495000</option>
+              <option>515000</option>
+              <option>535000</option>
+              <option>555000</option>
+              <option>575000</option>
+              <option>595000</option>
+              <option>615000</option>
+              <option>635000</option>
+              <option>655000</option>
+              <option>675000</option>
+              <option>695000</option>
+              <option>715000</option>
+              <option>735000</option>
+              <option>755000</option>
+              <option>775000</option>
+              <option>795000</option>
+              <option>815000</option>
+              <option>835000</option>
+              <option>855000</option>
+              <option>875000</option>
+              <option>895000</option>
+              <option>915000</option>
+              <option>935000</option>
+              <option>955000</option>
+              <option>975000</option>
+              <option>995000</option>
+              <option>1015000</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>카드가2</td>
+          <td id="카드가2" style="background-color:PowderBlue"></td>
+          <td id="카드가s2" style="background-color:CornflowerBlue"></td>
+        </tr>
+        <tr>
+          <td>현재시세3</td>
+          <td colspan="2">
+            <select id="5" onchange="
+            mr3.criterion_14(this.id,this.value,2);
+            mrs3.criterion_18(this.id,this.value,2);">
+              <option>215000</option>
+              <option>235000</option>
+              <option>255000</option>
+              <option>275000</option>
+              <option value="295000" selected>295000</option>
+              <option>315000</option>
+              <option>335000</option>
+              <option>355000</option>
+              <option>375000</option>
+              <option>395000</option>
+              <option>415000</option>
+              <option>435000</option>
+              <option>455000</option>
+              <option>475000</option>
+              <option>495000</option>
+              <option>515000</option>
+              <option>535000</option>
+              <option>555000</option>
+              <option>575000</option>
+              <option>595000</option>
+              <option>615000</option>
+              <option>635000</option>
+              <option>655000</option>
+              <option>675000</option>
+              <option>695000</option>
+              <option>715000</option>
+              <option>735000</option>
+              <option>755000</option>
+              <option>775000</option>
+              <option>795000</option>
+              <option>815000</option>
+              <option>835000</option>
+              <option>855000</option>
+              <option>875000</option>
+              <option>895000</option>
+              <option>915000</option>
+              <option>935000</option>
+              <option>955000</option>
+              <option>975000</option>
+              <option>995000</option>
+              <option>1015000</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>카드가3</td>
+          <td id="카드가3" style="background-color: Yellow"></td>
+          <td id="카드가s3" style="background-color: Orange"></td>
+        </tr>
+        <tr><td colspan="3" style="text-align:center"><b>현금가</b></td></tr>
+        <tr>
+          <td>카드가1/1.15</td>
+          <td id="현금가1" style="background-color:MediumPurple"></td>
+          <td id="현금가s1" style="background-color:BlueViolet"></td>
+        </tr>
+        <tr>
+          <td>카드가2/1.15</td>
+          <td id="현금가2" style="background-color:Red"></td>
+          <td id="현금가s2" style="background-color:DeepPink"></td>
+        </tr>
+        <tr>
+          <td>카드가3/1.15</td>
+          <td id="현금가3"style="background-color:Pink"></td>
+          <td id="현금가s3" style="background-color:PaleVioletRed"></td>
+        </tr>
+        <tr><td colspan="3" style="text-align:center"><b>네이버</b></td></tr>
+        <tr>
+          <td>네이버1</td>
+          <td id="네이버1" style="background-color:DarkSeaGreen"></td>
+          <td id="네이버s1"style="background-color:OliveDrab"></td>
+        </tr>
+        <tr>
+          <td>네이버2</td>
+          <td id="네이버2"style="background-color:GreenYellow"></td>
+          <td id="네이버s2"style="background-color:LimeGreen"></td>
+        </tr>
+        <tr>
+          <td>네이버3</td>
+          <td id="네이버3"style="background-color:PaleGreen"></td>
+          <td id="네이버s3"style="background-color:MediumAquamarine"></td>
+        </tr>
+    </table>
+    <script>
+      function market_rate14(number){
+        this.list_14=[0,0,0,0];
+        this.target=document.getElementById(number);
+        this.target2=this.target.options[this.target.selectedIndex].value;
+        this.list_14[3]=this.target2;
+        this.criterion_14=function(id,value,index){
+          var result = 0;
+          id =Number(id);
+          if (id===0){
+            this.list_14[2]=value*0.3;
+            this.list_14[id] = value;
+          }
+          else if(id>=3){
+            this.list_14[3]=value;
+          }
+          else if(id===2){
+            var direct=document.getElementById("2").options[document.getElementById("2").selectedIndex].text;
+            if (direct=="직접입력"){
+              var select14=document.getElementById("2");
+              select14.style.display="none";
+              var input14=document.getElementById("direct14");
+              input14.style.display="block";
+            }
+            else{
+              this.list_14[2]=direct;
+            }
+          }
+          else if(id===1){
+            this.list_14[1] = value;
+          }
+          else{
+            this.list_14[2]=value;
+          }
+          result = 1.15*this.list_14[0]+1.15*((this.list_14[3]-190000)*0.17*this.list_14[1])+1.15*this.list_14[2];
+          document.getElementById('카드가'+String(index+1)).innerText=Math.ceil(result);
+          document.getElementById('현금가'+String(index+1)).innerText=Math.ceil(result/1.15);
+          document.getElementById('네이버'+String(index+1)).innerText=Math.ceil(result*1.04);
+        };
+      }
+      mr1=new market_rate14(3);
+      mr2=new market_rate14(4);
+      mr3=new market_rate14(5);
+      function market_rate18(number){
+        this.list_18=[0,0,0,0];
+        this.target=document.getElementById(number);
+        this.target2=this.target.options[this.target.selectedIndex].value;
+        this.list_18[3]=this.target2;
+        this.criterion_18=function(id,value,index){
+          var result = 0;
+          id=Number(id.replace(/[a-z]/gi,''));
+          if (id===0){
+            this.list_18[2]=value*0.3;
+            this.list_18[id] = value;
+          }
+          else if (id===18){
+            this.list_18[2]=value;
+          }
+          else if(id>=3){
+            this.list_18[3]=value;
+          }
+          else if(id===2){
+            var direct=document.getElementById("s2").options[document.getElementById("s2").selectedIndex].text;
+            if (direct=="직접입력"){
+              var select18=document.getElementById("s2");
+              select18.style.display="none";
+              var input18=document.getElementById("direct18");
+              input18.style.display="block";
+            }
+            else{
+              this.list_18[2]=direct;
+            }
+          }
+          else if(id===1){
+            this.list_18[1] = value;
+          }
+          result = 1.15*this.list_18[0]+1.15*((this.list_18[3]-190000)*0.22*this.list_18[1])+1.15*this.list_18[2];
+          document.getElementById('카드가s'+String(index+1)).innerText=Math.ceil(result);
+          document.getElementById('네이버s'+String(index+1)).innerText=Math.ceil(result*1.04);
+          document.getElementById('현금가s'+String(index+1)).innerText=Math.ceil(result/1.15);
+        };
+      }
+      mrs1=new market_rate18(3);
+      mrs2=new market_rate18(4);
+      mrs3=new market_rate18(5);
+    </script>
+
+  </body>
+</html>
